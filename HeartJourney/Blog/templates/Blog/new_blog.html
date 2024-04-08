@@ -1,0 +1,25 @@
+{% extends "HeartJourney/header.html" %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+
+<section
+  id="hero"
+  class="hero d-flex flex-column justify-content-center align-items-center"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <h3 class="pb-4" style="font-family: Cardo, sans-serif">
+          Create New Journey
+        </h3>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %} {{ form | crispy }}
+          <button class="btn btn-success" type="submit">Submit</button>
+          <a href="/" class="btn btn-outline-light">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

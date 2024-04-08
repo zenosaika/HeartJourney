@@ -1,0 +1,51 @@
+{% extends "HeartJourney/header.html" %} 
+{% block content %}
+
+<section id="gallery" class="gallery">
+  <div class="container-fluid pt-5 mt-5">
+    <div class="row gy-4 justify-content-center">
+      <!-- Start Gallery Item -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mt-5">
+        <div class="gallery-item h-100">
+          <img
+            src="{{ blog.image.url }}"
+            class="img-fluid"
+            width="100%"
+            alt=""
+          />
+          <div
+            class="gallery-links d-flex align-items-center justify-content-center"
+          >
+            <a href="{{ blog.image.url }}" class="glightbox preview-link"
+              ><i class="bi bi-arrows-angle-expand"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <!-- End Gallery Item -->
+    </div>
+  </div>
+</section>
+
+<section
+  id="hero"
+  class="hero d-flex flex-column justify-content-center align-items-center pt-0 mt-4"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        {% if user.is_authenticated %}
+          <a href="/edit_blog/{{ blog.id }}" class="logo d-flex pb-1">
+            <i class="bi bi-pencil-square" style="font-size: 16px">
+              edit this journey</i
+            >
+          </a>
+        {% endif %}
+        <h2 class="pb-2">{{ blog.title }}</h2>
+        <pre>{{ blog.text_rendered | safe }}</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "HeartJourney/header.html" %} 
+{% block content %}
+
+<!-- ======= Hero Section ======= -->
+<section
+  id="hero"
+  class="hero d-flex flex-column justify-content-center align-items-center"
+  data-aos="fade"
+  data-aos-delay="1500"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center">
+        <h2>
+          はじめまして! ผมชื่อ<span>ฮาร์ท</span>ครับ เป็น นักศึกษาวิศวะปี 2 และ
+          AI Engineer
+        </h2>
+        <p>
+          Blanditiis praesentium aliquam illum tempore incidunt debitis dolorem
+          magni est deserunt sed qui libero. Qui voluptas amet.
+        </p>
+        <a
+          href="https://drive.google.com/file/d/15_t8hnKJw0EIoQbaMjxIDp2ruhZe4Mq9/view?usp=share_link"
+          class="btn-get-started"
+          >Open My CV</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Hero Section -->
+
+<main id="main" data-aos="fade" data-aos-delay="1500">
+  <!-- ======= Gallery Section ======= -->
+  <section id="gallery" class="gallery">
+    <div class="container-fluid text-center">
+      <div class="d-flex justify-content-center">
+        <h3 class="pb-4" style="font-family: Trirong, serif;">เรื่องราวของผม</h3>
+        {% if user.is_authenticated %}
+        <a href="/create_blog" class="logo d-flex ps-2">
+          <i class="bi bi-plus-circle-fill" style="font-size: 25px"></i>
+        </a>
+        {% endif %}
+      </div>
+
+      <div class="row gy-4 justify-content-center">
+        {% for blog in blogs %}
+        <!-- Start Gallery Item -->
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="gallery-item h-100">
+            <img
+              src="{{ blog.image.url }}"
+              class="img-fluid"
+              width="100%"
+              alt=""
+            />
+            <div
+              class="gallery-links d-flex align-items-center justify-content-center"
+            >
+              <a href="{{ blog.image.url }}" class="glightbox preview-link"
+                ><i class="bi bi-arrows-angle-expand"></i
+              ></a>
+              <a href="/blog/{{ blog.id }}" class="details-link"
+                ><i class="bi bi-link-45deg"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <!-- End Gallery Item -->
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- End Gallery Section -->
+</main>
+<!-- End #main -->
+
+{% endblock %}

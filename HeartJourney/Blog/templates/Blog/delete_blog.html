@@ -1,0 +1,36 @@
+{% extends "HeartJourney/header.html" %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+
+<section
+  id="hero"
+  class="hero d-flex flex-column justify-content-center align-items-center"
+>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <h3 class="pb-4" style="font-family: Cardo, sans-serif">
+          Delete This Journey
+        </h3>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="confirm_text" class="form-label"
+              >To Confirm, Type "{{ blog.title }}" in the box below.</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="confirm_text"
+              name="confirm_text"
+            />
+          </div>
+          <button class="btn btn-danger" type="submit">Delete</button>
+          <a href="/" class="btn btn-outline-light">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
